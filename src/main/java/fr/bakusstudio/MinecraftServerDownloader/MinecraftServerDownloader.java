@@ -10,6 +10,7 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLConnection;
 import java.nio.file.Files;
+import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
 import java.util.Scanner;
@@ -74,6 +75,12 @@ public class MinecraftServerDownloader {
             System.out.println(url);
             return false;
         }
+
+        Path fPath = Paths.get(filePath);
+        if(!Files.exists(fPath)){
+            try {Files.createFile(fPath);}catch (Exception e){System.out.println("Error in " + filePath + " creation");return false;}
+        }
+
         try {
             URL fileURL = new URL(url);
             URLConnection conn = fileURL.openConnection();
@@ -82,7 +89,7 @@ public class MinecraftServerDownloader {
             System.out.println("Start installation '" + filePath + "' from '" + url + "'");
             InputStream in = fileURL.openStream();
             System.out.println("Downloading of " + (conn.getContentLength() /10000) + "MB");
-            Files.copy(in, Paths.get(filePath), StandardCopyOption.REPLACE_EXISTING);
+            Files.copy(in, fPath, StandardCopyOption.REPLACE_EXISTING);
             System.out.println("Installation of '" + filePath + "' finished");
             return true;
         }catch (IOException e){
