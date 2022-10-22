@@ -26,7 +26,7 @@
         <repository>
             <id>github</id>
             <name>GitHub benjimania74 Apache Maven Packages</name>
-            <url>https://maven.pkg.github.com/benjimania74/MinecraftServerDownloader</url>
+            <url>https://maven.pkg.github.com/benjimania74/MinecraftServerDownloader/</url>
         </repository>
     </distributionManagement>
 </project>
