@@ -1,4 +1,4 @@
-package fr.bakusstudio.MinecraftServerDownloader;
+package fr.benjimania74.MinecraftServerDownloader;
 
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
